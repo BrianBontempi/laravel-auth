@@ -60,8 +60,10 @@
         @endforelse
     </tbody>
 </table>
+@if($projects->hasPages())
+{{ $projects->links() }}
+@endif
 @endsection
-
 @section('scripts')
 @vite('resources/js/delete_confirmation.js')
 
