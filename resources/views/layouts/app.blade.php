@@ -6,6 +6,12 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ config('app.name', 'Laravel') }} | @yield('title')</title>
+    <style>
+        body {
+            visibility: hidden;
+        }
+
+    </style>
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
@@ -20,6 +26,7 @@
     <div id="app">
         @include('includes.layouts.navbar')
         <main class="container py-4">
+            @include('includes.alert')
             @yield('content')
         </main>
     </div>
