@@ -4,7 +4,7 @@
 
 @section('content')
 
-<header>
+<header class="d-flex justify-content-between align-items-center">
     <h1>Progetti</h1>
 </header>
 
@@ -16,7 +16,17 @@
             <th scope="col">Slug</th>
             <th scope="col">Creato il</th>
             <th scope="col">Ultima modifica</th>
-            <th></th>
+            <th>
+                <div class="d-flex justify-content-end gap-2">
+                    <a href="{{ route('admin.projects.trash') }}" class="btn btn-sm btn-secondary">
+                        <i class="fa-solid fa-trash"></i>
+                        Vedi cestino
+                    </a>
+                    <a href="{{route('admin.projects.create')}}" class="btn btn-sm btn-success">
+                        <i class="fas fa-plus me-2"></i>Crea progetto
+                    </a>
+                </div>
+            </th>
         </tr>
     </thead>
     <tbody>
@@ -28,10 +38,11 @@
             <td>{{$project->created_at}}</td>
             <td>{{$project->updated_at}}</td>
             <td>
-                <div class="d-flex justify-content-end">
+                <div class="d-flex justify-content-end gap-2">
                     <a href="{{route('admin.projects.show', $project)}}" class="btn btn-sm btn-primary">
                         <i class="fa-solid fa-eye"></i>
                     </a>
+
                     <a href="{{ route('admin.projects.edit', $project)}}" class="btn btn-sm btn-warning">
                         <i class="fa-solid fa-pencil"></i>
                     </a>
@@ -45,12 +56,6 @@
                 </div>
             </td>
         </tr>
-        <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-        </tr>
         @empty
         <tr>
             <td colspan="6">
@@ -60,11 +65,13 @@
         @endforelse
     </tbody>
 </table>
+
 @if($projects->hasPages())
 {{ $projects->links() }}
 @endif
+
 @endsection
+
 @section('scripts')
 @vite('resources/js/delete_confirmation.js')
-
 @endsection
